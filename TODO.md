@@ -41,7 +41,9 @@ Add items at the bottom under **Backlog**; move them into a phase when we commit
 ## Phase 1 — Auth + core loop (no maps, no payments)
 - [ ] Auth: phone OTP (needs SMS provider e.g. MSG91/Twilio — use Supabase test OTP numbers in dev).
 - [ ] Profile: name, role flags (can drive / passenger), emergency contact.
-- [ ] Tables: `profiles`, `vehicles`, `rides`, `ride_requests`, `ratings` + RLS.
+- [x] Tables: `profiles`, `emergency_contacts`, `vehicles`, `rides`, `ride_requests`, `ratings` + RLS.
+      Writes to rides/requests/ratings only via RPCs: `create_ride`, `request_seat`, `respond_request`, `cancel_request`, `update_ride_status`, `rate_user`.
+      Self-check: `npx supabase db query --linked -f supabase/tests/core_loop.sql` → `ALL CORE LOOP TESTS PASSED`.
 - [ ] Driver: Offer Ride (origin, destination as text for now, time, seats, contribution).
 - [ ] Passenger: Find Ride (list of upcoming rides), request seat.
 - [ ] Driver: accept / reject (server function, atomic seat decrement).
