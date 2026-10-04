@@ -39,8 +39,12 @@ Add items at the bottom under **Backlog**; move them into a phase when we commit
 - [x] Supabase migrations folder in `supabase/`; first migration enables PostGIS.
 
 ## Phase 1 — Auth + core loop (no maps, no payments)
-- [ ] Auth: phone OTP (needs SMS provider e.g. MSG91/Twilio — use Supabase test OTP numbers in dev).
-- [ ] Profile: name, role flags (can drive / passenger), emergency contact.
+- [x] Auth: email OTP (dev). Session stored in Keystore/Keychain (`flutter_secure_storage`). Android backup off.
+- [x] Debug-only password login (`kDebugMode`, compiled out of release) for dashboard-created test users.
+- [ ] Custom SMTP: fill `SMTP_PASS` in `supabase/.env` (git-ignored), run `npx supabase config push`.
+- [ ] Before pilot: phone OTP via SMS provider (MSG91/Twilio) **and** custom SMTP (Supabase default email only reaches project team members, ~2/hour).
+- [x] Profile: name, can drive.
+- [ ] Profile: emergency contact (table + RLS ready).
 - [x] Tables: `profiles`, `emergency_contacts`, `vehicles`, `rides`, `ride_requests`, `ratings` + RLS.
       Writes to rides/requests/ratings only via RPCs: `create_ride`, `request_seat`, `respond_request`, `cancel_request`, `update_ride_status`, `rate_user`.
       Self-check: `npx supabase db query --linked -f supabase/tests/core_loop.sql` → `ALL CORE LOOP TESTS PASSED`.
