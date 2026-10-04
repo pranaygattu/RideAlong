@@ -54,7 +54,7 @@ Add items at the bottom under **Backlog**; move them into a phase when we commit
 - [x] Ride status: scheduled → started → completed / cancelled.
 - [x] Rate each other after completion.
 - [x] My trips tab (driving + requested, upcoming/past). Light + dark theme.
-- [ ] Manual test of full loop on device with driver@test.com + rider@test.com.
+- [x] Manual test of full loop on device with driver@test.com + rider@test.com.
 
 ## Phase 2 — Maps
 - [ ] Places autocomplete for origin/destination/pickup.
