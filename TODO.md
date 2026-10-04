@@ -48,11 +48,13 @@ Add items at the bottom under **Backlog**; move them into a phase when we commit
 - [x] Tables: `profiles`, `emergency_contacts`, `vehicles`, `rides`, `ride_requests`, `ratings` + RLS.
       Writes to rides/requests/ratings only via RPCs: `create_ride`, `request_seat`, `respond_request`, `cancel_request`, `update_ride_status`, `rate_user`.
       Self-check: `npx supabase db query --linked -f supabase/tests/core_loop.sql` → `ALL CORE LOOP TESTS PASSED`.
-- [ ] Driver: Offer Ride (origin, destination as text for now, time, seats, contribution).
-- [ ] Passenger: Find Ride (list of upcoming rides), request seat.
-- [ ] Driver: accept / reject (server function, atomic seat decrement).
-- [ ] Ride status: scheduled → started → completed / cancelled.
-- [ ] Rate each other after completion.
+- [x] Driver: Offer Ride (origin, destination as text for now, time, seats, contribution) + add vehicle.
+- [x] Passenger: Find Ride (list of upcoming rides, search), request seat.
+- [x] Driver: accept / reject (server function, atomic seat decrement).
+- [x] Ride status: scheduled → started → completed / cancelled.
+- [x] Rate each other after completion.
+- [x] My trips tab (driving + requested, upcoming/past). Light + dark theme.
+- [ ] Manual test of full loop on device with driver@test.com + rider@test.com.
 
 ## Phase 2 — Maps
 - [ ] Places autocomplete for origin/destination/pickup.

@@ -5,6 +5,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'login_screen.dart';
 import 'profile_screen.dart';
+import 'ui.dart';
 
 // Publishable key is public by design; RLS protects the data.
 // Supplied via --dart-define-from-file=env/dev.json (see .vscode/launch.json).
@@ -33,7 +34,9 @@ class RideAlongApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'RideAlong',
-      theme: ThemeData(colorSchemeSeed: Colors.teal),
+      debugShowCheckedModeBanner: false,
+      theme: buildTheme(Brightness.light),
+      darkTheme: buildTheme(Brightness.dark),
       home: const AuthGate(),
     );
   }
@@ -88,5 +91,5 @@ void showError(BuildContext context, Object error) {
     _ when kDebugMode => 'Error: $error',
     _ => 'Something went wrong. Check your connection and try again.',
   };
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(message)));
+  showMessage(context, message);
 }
